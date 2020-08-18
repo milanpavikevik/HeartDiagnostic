@@ -1,0 +1,34 @@
+{% extends "layout.html" %}
+
+{% block content %}
+
+<form action="/uploadfile/" enctype="multipart/form-data" method="post">
+<input name="file" style="margin-left:385px; margin-top:10px;" class="ui button secondary" type="file" multiple>
+  <br/>
+<input style="margin-left:495px; margin-top:10px" class="ui button secondary" type="submit">
+</form>
+<hr style="height:2px;border-width:0;color:gray;background-color:gray; margin-top:60px">
+<h1 style="margin-left:360px; margin-top:20px;">Database with patient records</h1>
+
+<table class="ui celled table">
+  <thead>
+    <tr>
+      <th>Id</th>
+      <th>Prediction</th>
+      <th>Level of Confidence</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for pat in patients %}
+    <tr>
+      <td>{{ pat.id }}</td>
+      <td>{{ pat.prediction }}</td>
+      <td>{{ pat.confidenceLevel }}</td>
+
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+
+
+{% endblock %}
